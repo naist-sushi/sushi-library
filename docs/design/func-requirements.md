@@ -1,0 +1,12 @@
+- List Books
+- Register Books
+  - Mannual
+  - (Reading ISBN code)
+- Request Books
+  - Request & List requested books
+    - Mannual
+    - (Reading ISBN code)
+  - Approve or Reject requests
+- Borrow & return books (like library)
+- User Registration
+

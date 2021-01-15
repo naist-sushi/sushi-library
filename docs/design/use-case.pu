@@ -1,0 +1,59 @@
+@startuml
+
+actor User
+
+
+package SushiLibrary{
+    "Choose pages" as (choose)
+
+    "Dispaly BookListPage" as (DispBListP)
+    "Dispaly BookRegistrationPage" as (DispBRegP)
+    "Dispaly BookRequestPage" as (DispBReqP)
+    "Dispaly BookLendingPage" as (DispBLendP)
+    "Dispaly BookReturnPage" as (DispBRetP)
+    "Display user-registration page" as (DispUserRegP)
+    "Display login/logout page" as (DispLoginoutP)
+
+    "Register User info" as (RegUser)
+
+    "Register Book" as (RegB)
+    "Lending Books" as (LendB)
+    "Returnig Books" as (RetB)
+    "Request Books" as (ReqB) 
+    "Approve/Reject Request" as (AprvRejReq)
+
+    "Login/Logout" as (Loginout)
+}
+
+User --> choose
+
+choose --> DispBListP
+choose --> DispBRegP
+choose --> DispBReqP
+choose --> DispBLendP
+choose --> DispBRetP
+choose --> DispUserRegP
+choose --> DispLoginoutP
+
+DispBRegP --> RegB
+DispBLendP --> LendB
+DispBRetP --> RetB
+DispBReqP --> ReqB
+DispBReqP --> AprvRejReq
+DispUserRegP --> RegUser
+DispLoginoutP --> Loginout
+
+@enduml
+
+
+
+object Book
+object User
+
+object BookListPage
+object BookRegistrationPage
+object BookRequestPage
+object BookLendingPage
+object BookReturnPage
+
+object UserRegistrationPage

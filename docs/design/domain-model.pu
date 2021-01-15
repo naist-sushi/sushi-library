@@ -1,0 +1,22 @@
+@startuml
+
+object Book
+object User
+
+object BookListPage
+object BookRegistrationPage
+object BookRequestPage
+object BookLendingPage
+object BookReturnPage
+
+object UserRegistrationPage
+
+BookListPage "1" *-- "*" Book
+BookRegistrationPage "1" *-- "*" Book
+BookRequestPage "1" *-- "*" Book
+BookLendingPage "1" *-- "*" Book
+BookReturnPage "1" *-- "*" Book
+
+UserRegistrationPage "1" *-- "*" User
+
+@enduml
