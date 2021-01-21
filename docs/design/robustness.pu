@@ -1,26 +1,13 @@
 @startuml
-
+title Robustness(List Books)
 actor User
 boundary WebPage
 
 package SushiLibrary{
     boundary ChoosePage
     boundary BookListPage
-    boundary BookRegistrationPage
-    boundary BookRequestPage
-    boundary BookLendingPage
-    boundary BookReturnPage
-    boundary UserRegistrationPage
-    boundary LoginoutPage
 
     control "Listup Books" as ListB
-    control "Register Book" as RegB
-    control "Lending Books" as LendB
-    control "Returnig Books" as RetB
-    control "Request Books" as ReqB 
-    control "Approve/Reject requests" as AprvRejReq
-    control "Register Userinfo" as RegUser
-    control "Login/Logout" as Loginout
     control "Check the User" as CheckUser
 
     entity Book
@@ -30,38 +17,44 @@ package SushiLibrary{
 
 User --> WebPage
 WebPage --> ChoosePage
+WebPage <-- BookListPage
 
-ChoosePage --> BookListPage
-ChoosePage --> BookRegistrationPage
-ChoosePage --> BookRequestPage
-ChoosePage --> BookLendingPage
-ChoosePage --> BookReturnPage
-ChoosePage --> UserRegistrationPage
-ChoosePage --> LoginoutPage
+ChoosePage --> CheckUser
 
-BookListPage --> CheckUser
-BookRegistrationPage --> CheckUser
-BookLendingPage --> CheckUser
-BookReturnPage --> CheckUser
-BookRequestPage --> CheckUser
-UserRegistrationPage --> RegUser
-LoginoutPage --> Loginout
-
-CheckUser --> ListB
-CheckUser --> RegB
-CheckUser --> LendB
-CheckUser --> RetB
-CheckUser --> ReqB
-CheckUser --> AprvRejReq
+CheckUser --> ListB : If check is ok
+CheckUser -- UserInfo
 
 ListB -- Book
-RegB -- Book
-LendB -- Book
-RetB -- Book
-ReqB -- Book
-AprvRejReq -- Book
-RegUser -- UserInfo
-Loginout -- UserInfo
+ListB -up-> BookListPage
+
+@enduml
+
+@startuml
+title Robustness(Register Books)
+actor User
+boundary WebPage
+
+package SushiLibrary{
+    boundary ChoosePage
+    
+    boundary BookRegistrationPage
+
+    control "Register Book" as RegB
+    control "Check the User" as CheckUser
+
+    entity Book
+    entity UserInfo
+
+}
+
+User --> WebPage
+WebPage --> ChoosePage
+WebPage <-- BookRegistrationPage
+
+ChoosePage --> CheckUser
 CheckUser -- UserInfo
+CheckUser --> RegB : If check is ok
+RegB -- Book
+RegB -up-> BookRegistrationPage
 
 @enduml
