@@ -23,17 +23,21 @@ package SushiLibrary{
     "Approve/Reject Request" as (AprvRejReq)
 
     "Login/Logout" as (Loginout)
+    "Display Book info" as (Book)
+    "Display User info" as (Userif)
+    "Display Book status" as (Books)
 }
 
-User --> choose
+User --> DispLoginoutP
 
+Loginout --> choose
 choose --> DispBListP
 choose --> DispBRegP
 choose --> DispBReqP
 choose --> DispBLendP
 choose --> DispBRetP
 choose --> DispUserRegP
-choose --> DispLoginoutP
+
 
 DispBRegP --> RegB
 DispBLendP --> LendB
@@ -43,17 +47,25 @@ DispBReqP --> AprvRejReq
 DispUserRegP --> RegUser
 DispLoginoutP --> Loginout
 
+RegUser --> Userif
+RegB --> Book
+DispBListP --> Book
+
+ReqB --> Books
+AprvRejReq --> Books
+LendB --> Books
+RetB --> Books
+
+
+
+
+
+
+
+
+
+
+
+
+
 @enduml
-
-
-
-object Book
-object User
-
-object BookListPage
-object BookRegistrationPage
-object BookRequestPage
-object BookLendingPage
-object BookReturnPage
-
-object UserRegistrationPage

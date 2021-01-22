@@ -1,7 +1,27 @@
+# Sudhi Library
 @startuml
+
+object BookidandNameandAuthor
+object pagenum
+object thumbnailurl
+object price
+object status
+
+object RequestrejectorRequestedorWaitingstored  
+object existing
+object borrowed
+object locationunknown
+
+object userid
+object name
+object rank
+object admin
+object normal
+
 
 object Book
 object User
+
 
 object BookListPage
 object BookRegistrationPage
@@ -19,4 +39,42 @@ BookReturnPage "1" *-- "*" Book
 
 UserRegistrationPage "1" *-- "*" User
 
-@enduml
+Book "1" *-- "*" BookidandNameandAuthor
+Book "1" *-- "*" pagenum
+Book "1" *-- "*" thumbnailurl
+Book "1" *-- "*" price
+Book "1" *-- "*" status
+
+status  "1" *-- "*" RequestrejectorRequestedorWaitingstored 
+status  "1" *-- "*" existing
+status  "1" *-- "*" borrowed
+status  "1" *-- "*" locationunknown
+
+User "1" *-- "*" userid
+User "1" *-- "*" name 
+User "1" *-- "*" rank
+
+
+rank "1" *-- "*" admin
+rank "1" *-- "*" normal
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@enduml 
