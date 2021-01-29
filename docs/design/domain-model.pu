@@ -38,10 +38,10 @@ object BookReturnPage
 
 Book "1" -- "1" Bookid
 
-Book "1" *-- "*" BookName
-Book "1" *-- "*" Author
+Book "1" -- "1" BookName
+Book "1" -- "1" Author
 
-Book "1" *-- "*" thumbnailurl
+Book "1" -- "1" thumbnailurl
 Book "1" *-- "*" price
 Book "1" *-- "*" status
 
@@ -50,10 +50,10 @@ status  "1" *-- "*" existing
 status  "1" *-- "*" borrowed
 status  "1" *-- "*" locationunknown
 
-userid "1" *-- "*" name
-userid "1" *-- "*" rank
-rank "1" *-- "*" admin
-rank "1" *-- "*" normal
+userid "1" -- "1" name
+userid "1" -- "1" rank
+rank "1" -- "1" admin
+rank "1" -- "1" normal
  
 
 
