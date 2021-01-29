@@ -28,6 +28,6 @@ jobs:
     - name: Setup environment
       run: pipenv run python ./sushi_library/manage.py migrate
     - name: Running linter
-      run: flake8 ./sushi_library/
+      run: pipenv run flake8 ./sushi_library/
     - name: Running test
       run: pipenv run python ./sushi_library/manage.py test -v 3
