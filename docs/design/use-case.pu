@@ -4,16 +4,8 @@ actor User
 
 
 package SushiLibrary{
-    "Choose pages" as (choose)
-
-    "Dispaly BookListPage" as (DispBListP)
-    "Dispaly BookRegistrationPage" as (DispBRegP)
-    "Dispaly BookRequestPage" as (DispBReqP)
-    "Dispaly BookLendingPage" as (DispBLendP)
-    "Dispaly BookReturnPage" as (DispBRetP)
-    "Display user-registration page" as (DispUserRegP)
-    "Display login/logout page" as (DispLoginoutP)
-
+    
+    "Showing Boook List" as (ShowBook)
     "Register User info" as (RegUser)
 
     "Register Book" as (RegB)
@@ -28,28 +20,21 @@ package SushiLibrary{
     "Display Book status" as (Books)
 }
 
-User --> DispLoginoutP
-
-Loginout --> choose
-choose --> DispBListP
-choose --> DispBRegP
-choose --> DispBReqP
-choose --> DispBLendP
-choose --> DispBRetP
-choose --> DispUserRegP
 
 
-DispBRegP --> RegB
-DispBLendP --> LendB
-DispBRetP --> RetB
-DispBReqP --> ReqB
-DispBReqP --> AprvRejReq
-DispUserRegP --> RegUser
-DispLoginoutP --> Loginout
+
+Loginout --> ShowBook
+Loginout --> RegB
+Loginout --> LendB
+Loginout --> RetB
+Loginout --> ReqB
+Loginout --> AprvRejReq
+Loginout --> RegUser
+User --> Loginout
 
 RegUser --> Userif
 RegB --> Book
-DispBListP --> Book
+ShowBook --> Book
 
 ReqB --> Books
 AprvRejReq --> Books

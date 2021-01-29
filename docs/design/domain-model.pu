@@ -1,8 +1,10 @@
 # Sudhi Library
 @startuml
 
-object BookidandNameandAuthor
-object pagenum
+object Bookid 
+object BookName
+object Author
+
 object thumbnailurl
 object price
 object status
@@ -20,7 +22,7 @@ object normal
 
 
 object Book
-object User
+
 
 
 object BookListPage
@@ -29,18 +31,16 @@ object BookRequestPage
 object BookLendingPage
 object BookReturnPage
 
-object UserRegistrationPage
 
-BookListPage "1" *-- "*" Book
-BookRegistrationPage "1" *-- "*" Book
-BookRequestPage "1" *-- "*" Book
-BookLendingPage "1" *-- "*" Book
-BookReturnPage "1" *-- "*" Book
 
-UserRegistrationPage "1" *-- "*" User
 
-Book "1" *-- "*" BookidandNameandAuthor
-Book "1" *-- "*" pagenum
+
+
+Book "1" -- "1" Bookid
+
+Book "1" *-- "*" BookName
+Book "1" *-- "*" Author
+
 Book "1" *-- "*" thumbnailurl
 Book "1" *-- "*" price
 Book "1" *-- "*" status
@@ -50,13 +50,11 @@ status  "1" *-- "*" existing
 status  "1" *-- "*" borrowed
 status  "1" *-- "*" locationunknown
 
-User "1" *-- "*" userid
-User "1" *-- "*" name 
-User "1" *-- "*" rank
-
-
+userid "1" *-- "*" name
+userid "1" *-- "*" rank
 rank "1" *-- "*" admin
 rank "1" *-- "*" normal
+ 
 
 
 
@@ -77,4 +75,4 @@ rank "1" *-- "*" normal
 
 
 
-@enduml 
+@enduml
