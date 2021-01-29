@@ -26,8 +26,8 @@ jobs:
         pip install pipenv
         pipenv install --dev
     - name: Setup environment
-      run: pipenv run python manage.py migrate
+      run: pipenv run python ./sushi_library/manage.py migrate
     - name: Running linter
       run: flake8 ./sushi_library/
     - name: Running test
-      run: python manage.py test -v 3
+      run: pipenv run python ./sushi_library/manage.py test -v 3
