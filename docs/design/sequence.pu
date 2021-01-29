@@ -11,7 +11,7 @@ entity UserInfo
 
 User -> BookListPage : request the page
 activate BookListPage
-BookListPage -> controller : check the user is correct
+BookListPage -> controller : request book
 activate controller
 controller -> UserInfo : get the user info
 activate UserInfo
@@ -41,7 +41,7 @@ entity UserInfo
 
 User -> BookRegistrationPage : input the book info
 activate BookRegistrationPage
-BookRegistrationPage -> controller : check the user is correct
+BookRegistrationPage -> controller : register book
 activate controller
 controller -> UserInfo : get the user info
 activate UserInfo
