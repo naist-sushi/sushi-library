@@ -42,13 +42,13 @@ Book "1" -- "1" BookName
 Book "1" -- "1" Author
 
 Book "1" -- "1" thumbnailurl
-Book "1" *-- "*" price
-Book "1" *-- "*" status
+Book "1" -- "1" price
+Book "1" -- "1" status
 
-status  "1" *-- "*" RequestrejectorRequestedorWaitingstored 
-status  "1" *-- "*" existing
-status  "1" *-- "*" borrowed
-status  "1" *-- "*" locationunknown
+status  "1" -- "1" RequestrejectorRequestedorWaitingstored 
+status  "1" -- "1" existing
+status  "1" -- "1" borrowed
+status  "1" -- "1" locationunknown
 
 userid "1" -- "1" name
 userid "1" -- "1" rank
