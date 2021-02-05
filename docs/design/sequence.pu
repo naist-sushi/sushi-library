@@ -1,0 +1,59 @@
+@startuml
+title List Books Sequence
+actor User
+
+boundary BookListPage
+
+control "view(main controller)" as controller
+
+entity Book
+entity UserInfo
+
+User -> BookListPage : request the page
+activate BookListPage
+BookListPage -> controller : request book
+activate controller
+controller -> UserInfo : get the user info
+activate UserInfo
+UserInfo --> controller : return the user info
+deactivate UserInfo
+controller -> Book : get the book info
+activate Book
+Book --> controller : return the book info
+deactivate Book
+controller --> BookListPage : return book info
+deactivate controller
+BookListPage -> User
+deactivate BookListPage
+
+@enduml
+
+@startuml
+title Register Books Sequence
+actor User
+
+boundary BookRegistrationPage
+
+control "view(main controller)" as controller
+
+entity Book
+entity UserInfo
+
+User -> BookRegistrationPage : input the book info
+activate BookRegistrationPage
+BookRegistrationPage -> controller : register book
+activate controller
+controller -> UserInfo : get the user info
+activate UserInfo
+UserInfo --> controller : return the user info
+deactivate UserInfo
+controller -> Book : write book info
+activate Book
+Book --> controller : return the result
+deactivate Book
+controller --> BookRegistrationPage : return the result
+deactivate controller
+BookRegistrationPage -> User : show the result
+deactivate BookRegistrationPage
+
+@enduml

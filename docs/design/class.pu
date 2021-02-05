@@ -1,0 +1,135 @@
+@startuml
+title Class Diagram
+class Book {
+    Int ID
+    String book_name
+    String author
+    String ISBN
+    String thumbnail_url
+    Int page_num
+    Int price
+    Date create_date
+    Date update_date
+    Foreignkey Status
+
+    RegisterBook(book_name, author, tnumbnail, page_num, price)
+    RegisterBookByISBN(ISBN)
+    GetBooks()
+    GetBookByID(id)
+    GetBooksByStatus(status)
+    UpdateBook(book_name, author, tnumbnail, page_num, price)
+    UpdateBookStatus(book_id, status)
+    DeleteBook(book_id)
+}
+
+class Status {
+    Int ID
+    String status_msg
+}
+
+enum "Status Message" as status_msg {
+    "Request pending"
+    "Request rejected"
+    "Backordering"
+    "Collection"
+    "On loan"
+    "Location unknown"
+}
+
+class Request {
+    Int ID
+    Text reason
+    Date request_date
+    Foreignkey RequestImportance
+    Foreignkey Book
+
+    IssueRequest(reason, request_importance_id, book_id)
+    GetRequest(id)
+    UpdateRequest(reason, request_importance_id, book_id)
+    DeleteRequest(id)
+}
+
+class RequestImportance {
+    Int ID
+    Int importance_value
+    String importance_msg
+}
+
+enum "Importance Message" as importance_msg {
+    "Low"
+    "Middle"
+    "High"
+    "Must"
+}
+
+class Event {
+    Int ID
+    Date issue_date
+    Foreignkey EventType
+    Foreignkey Book
+    Foreignkey User
+
+    IssueEvent(id, event_type_id, book_id, user_id)
+    GetEvents()
+    GetEventsByBook(book_id)
+    GetEventsByDate(date)
+}
+
+class EventType {
+    Int ID
+    String event_msg
+}
+
+enum "Event Message" as event_msg{
+    "Issue the request"
+    "Allow the request"
+    "Reject the request"
+    "Book arrive"
+    "Lend out"
+    "Disappear"
+}
+
+class User {
+    Int ID
+    String name
+    String password
+    String mail_address
+    Foreignkey UserRank
+
+    CreateUser(name, password, mail_address, rank_id)
+    GetUsers()
+    GetUserByID(id)
+    UpdateUser(name, password, mail_address, rank_id)
+    DeleteUser(id)
+}
+
+class UserRank {
+    Int ID
+    Int rank_value
+    String rank_name
+}
+
+enum "Rank Name" as rank_name {
+    "General"
+    "Admin"
+}
+
+' enum
+Status -- status_msg
+RequestImportance -- importance_msg
+EventType -- event_msg
+UserRank -- rank_name
+
+' rerations
+Book "*" *-- "1" Status
+
+Request "1" -- "1" Book
+Request "*" *-- "1" RequestImportance
+
+Event "*" -- "1" Book
+Event "*" -- "1" User
+Event "*" *-- "1" EventType
+
+User "*" *-- "1" UserRank
+
+@enduml

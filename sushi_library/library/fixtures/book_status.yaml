@@ -1,0 +1,24 @@
+- model: library.BookStatus
+  pk: 1
+  fields:
+    status_msg: "Request pending"
+- model: library.BookStatus
+  pk: 2
+  fields:
+    status_msg: "Request rejected"
+- model: library.BookStatus
+  pk: 3
+  fields:
+    status_msg: "Backordering"
+- model: library.BookStatus
+  pk: 4
+  fields:
+    status_msg: "Collection"
+- model: library.BookStatus
+  pk: 5
+  fields:
+    status_msg: "On loan"
+- model: library.BookStatus
+  pk: 6
+  fields:
+    status_msg: "Location unknown"

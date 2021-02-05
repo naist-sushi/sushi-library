@@ -1,0 +1,3 @@
+[flake8]
+exclude = ./sushi_library/config/settings/local.py
+max-line-length = 160
