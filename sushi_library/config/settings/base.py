@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
+
+    'library.apps.LibraryConfig',
 ]
 
 SITE_ID = 1
