@@ -1,6 +1,7 @@
 from django.db import models
 import uuid 
 
+
 class BookStatus(models.Model):
     class Meta:
         db_table = 'book_status'
@@ -56,6 +57,7 @@ class BookRequest(models.Model):
                              on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+
 
 
 class event(models.Model):
@@ -125,3 +127,5 @@ EVENT_STATUS = (
     def __str__(self):
        """String for representing the Model object."""
         return f'{self.event_type.eventtype} {self.id} ({self.book.title}) '
+
+

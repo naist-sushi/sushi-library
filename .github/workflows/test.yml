@@ -1,0 +1,39 @@
+name: test
+on:
+  push:
+    branches:
+    - master
+  pull_request:
+    branches:
+    - master
+jobs:
+  test:
+    strategy:
+      matrix:
+        python-version: [3.9]
+        platform: [ubuntu-latest]
+    runs-on: ${{ matrix.platform }}
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v2
+      with:
+        python-version: ${{ matrix.python-version }}
+    - uses: actions/cache@v2
+      with:
+        path: ~/.local/share/virtualenvs
+        key: ${{ runner.os }}-pipenv-${{ hashFiles('Pipfile.lock') }}
+        restore-keys: |
+          ${{ runner.os }}-pipenv-
+    - name: Install dependencies(dev)
+      run: |
+        python -m pip install --upgrade pip
+        pip install pipenv
+        pipenv install --dev
+    - name: Setup environment
+      run: pipenv run python ./sushi_library/manage.py migrate
+    - name: Running linter
+      run: pipenv run flake8 ./sushi_library/
+    - name: Running test
+      run: pipenv run python ./sushi_library/manage.py test -v 3
