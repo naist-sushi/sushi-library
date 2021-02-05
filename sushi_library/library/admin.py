@@ -1,3 +1,4 @@
-# from django.contrib import admin
+from django.contrib import admin
+from .models import BookStatus
 
-# Register your models here.
+admin.site.register(BookStatus)
