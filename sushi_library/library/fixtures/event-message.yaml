@@ -1,0 +1,24 @@
+- model: library.EventMessage
+  pk: 1
+  fields:
+    message: "Issue the request"
+- model: library.EventMessage
+  pk: 2
+  fields:
+    message: "Allow the request"
+- model: library.EventMessage
+  pk: 3
+  fields:
+    message: "Request the request"
+- model: library.EventMessage
+  pk: 4
+  fields:
+    message: "Book arrive"
+- model: library.EventMessage
+  pk: 5
+  fields:
+    message: "Lend out"
+- model: library.EventMessage
+  pk: 6
+  fields:
+    message: "Disappear"
