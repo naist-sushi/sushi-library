@@ -142,3 +142,4 @@ cython_debug/
 # Option
 .python-version
 .idea
+media

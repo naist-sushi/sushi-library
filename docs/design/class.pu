@@ -115,13 +115,13 @@ enum "Rank Name" as rank_name {
 }
 
 ' enum
-Status -- status_msg
+'Status -- status_msg
 RequestImportance -- importance_msg
 EventType -- event_msg
 UserRank -- rank_name
 
 ' rerations
-Book "*" *-- "1" Status
+'Book "*" *-- "1" Status
 
 Request "1" -- "1" Book
 Request "*" *-- "1" RequestImportance

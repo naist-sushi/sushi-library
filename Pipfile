@@ -7,6 +7,9 @@ name = "pypi"
 django = "*"
 django-allauth = "*"
 pyyaml = "*"
+pillow = "*"
+django-imagekit = "*"
+django-cleanup = "*"
 
 [dev-packages]
 flake8 = "*"
