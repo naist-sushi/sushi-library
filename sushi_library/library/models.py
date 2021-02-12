@@ -7,7 +7,7 @@ from imagekit.processors import ResizeToFill
 
 
 def get_file_path(instance, filename):
-    image_dir = 'media/images/'
+    image_dir = 'images/'
     ext = filename.split('.')[-1]
     filename = "%s.%s" % (uuid.uuid4(), ext)
     return os.path.join(image_dir, filename)
