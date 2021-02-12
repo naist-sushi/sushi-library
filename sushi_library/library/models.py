@@ -2,6 +2,7 @@ import os
 import uuid
 
 from django.db import models
+from django.contrib.auth.models import User
 from imagekit.models import ImageSpecField
 from imagekit.processors import ResizeToFill
 
@@ -82,3 +83,37 @@ class BookRequest(models.Model):
                              on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+
+
+class EventMessage(models.Model):
+    class Meta:
+        db_table = "event_message"
+
+    message = models.CharField(verbose_name="message",
+                               max_length=255,
+                               null=False,
+                               unique=True,
+                               blank=False)
+
+    def __str__(self):
+        return self.message
+
+
+class Event(models.Model):
+    class Meta:
+        db_table = "event"
+
+    message = models.ForeignKey(EventMessage,
+                                verbose_name="message",
+                                on_delete=models.PROTECT)
+    book = models.ForeignKey(Book,
+                             verbose_name="book",
+                             on_delete=models.PROTECT)
+    user = models.ForeignKey(User,
+                             verbose_name="user",
+                             on_delete=models.PROTECT)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.book.name + "-" + self.message.message

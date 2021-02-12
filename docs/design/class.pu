@@ -65,7 +65,7 @@ enum "Importance Message" as importance_msg {
 class Event {
     Int ID
     Date issue_date
-    Foreignkey EventType
+    Foreignkey EventMessage
     Foreignkey Book
     Foreignkey User
 
@@ -75,7 +75,7 @@ class Event {
     GetEventsByDate(date)
 }
 
-class EventType {
+class EventMessage {
     Int ID
     String event_msg
 }
@@ -117,7 +117,7 @@ enum "Rank Name" as rank_name {
 ' enum
 'Status -- status_msg
 RequestImportance -- importance_msg
-EventType -- event_msg
+EventMessage -- event_msg
 UserRank -- rank_name
 
 ' rerations
@@ -128,7 +128,7 @@ Request "*" *-- "1" RequestImportance
 
 Event "*" -- "1" Book
 Event "*" -- "1" User
-Event "*" *-- "1" EventType
+Event "*" *-- "1" EventMessage
 
 User "*" *-- "1" UserRank
 
