@@ -42,6 +42,10 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
 
     'library.apps.LibraryConfig',
+
+    'imagekit',
+
+    'django_cleanup.apps.CleanupConfig',
 ]
 
 SITE_ID = 1
@@ -141,3 +145,6 @@ STATIC_URL = '/static/'
 
 LOGIN_REDIRECT_URL = 'home'
 ACCOUNT_LOGOUT_REDIRECT_URL = '/accounts/login/'
+
+# MEDIA
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
