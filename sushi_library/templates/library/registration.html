@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block title %}
+    SL - Book Registration
+{% endblock %}
+
+{% block content %}
+    <form action="{% url 'library:register' %}" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {% for field in form %}
+        <div class="input">
+            {{ field }}
+        </div>
+        {% if field.errors %}
+            {% for error in field.errors %}
+                <p class="error_str">
+                    {{ error }}
+                </p>
+            {% endfor %}
+        {% endif %}
+
+        {% if form.non_field_errors %}
+            <div class="error_str">
+                <ul>
+                    {% for error in form.non_field_errors %}
+                    <li>
+                        {{ error }}
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endif %}
+    {% endfor %}
+    <input type="submit" value="Register">
+    </form>
+{% endblock %}
