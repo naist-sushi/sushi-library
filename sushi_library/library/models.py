@@ -48,6 +48,9 @@ class Book(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
+    def __str__(self):
+        return self.name
+
 
 class BookRequestImportance(models.Model):
     class Meta:
@@ -83,6 +86,9 @@ class BookRequest(models.Model):
                              on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return 'request-' + self.book.name
 
 
 class EventMessage(models.Model):
