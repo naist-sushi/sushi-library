@@ -4,10 +4,11 @@ from .models import Book, Event, EventMessage
 from .forms import BookRegistrationForm
 
 BOOK_ARRIVE_EVENTMESSAGE_PK = 4
+BOOK_ARRIVE_MSG = "Book arrive"
 
 
 class IndexView(ListView):
-    model = Book
+    queryset = Book.objects.filter(event__message__message=BOOK_ARRIVE_MSG)
     template_name = "library/index.html"
 
 
