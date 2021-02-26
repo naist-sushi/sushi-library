@@ -4,9 +4,11 @@
 {% endblock %}
 
 {% block content %}
-    <form action="{% url 'library:register' %}" method="post" enctype="multipart/form-data">
+	<body background="https://thumbs.dreamstime.com/z/%E4%B9%A6%E5%9B%BE%E4%B9%A6%E9%A6%86%E6%97%A0%E7%BC%9D%E7%9A%84%E6%A0%B7%E5%BC%8F%E6%88%96%E8%83%8C%E6%99%AF-61396384.jpg">
+    <img width="300" height="200" align="middle" src="https://cdnb.artstation.com/p/assets/images/images/002/011/511/large/digi-nana-cute-sushi.jpg?1455927106">
     {% csrf_token %}
     {% for field in form %}
+	
         <div class="input">
             {{ field }}
         </div>
